@@ -5,8 +5,8 @@ Once opened, you can close the app and the service will run indefinitely, and wi
 The application stores the log file `accel_log.txt` in your `Documents` folder.
 It writes data every 5 seconds by default.
 
-The file is of the format:
-  <time since epoch>, <x value>, <y value>, <z value>
+The file has on each line:
+  (time in seconds since epoch), (x value), (y value), (z value)
 
 TODO:
 - set directory and filename from UI
