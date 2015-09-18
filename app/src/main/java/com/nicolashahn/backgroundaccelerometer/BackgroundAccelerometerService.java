@@ -22,10 +22,8 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
 
-//    private SensorManager mSensorManager;
-//    private Sensor mAccelerometer;
-
-    private String filepath = "/sdcard/Documents/accel_log.txt";
+//    private String filepath = "/sdcard/Documents/accel_log.txt";
+    private String filepath;
     private FileWriter writer;
     private FileOutputStream output;
 
@@ -42,6 +40,7 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        filepath = this.getString(R.string.file_path);
         try {
             output = new FileOutputStream(filepath, true);
             writer = new FileWriter(output.getFD());

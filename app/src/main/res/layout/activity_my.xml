@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The accelerometer logging service has started, and will run in the background. Feel free to close this application."
+        android:text="The accelerometer logging service has started, and will run in the background. Feel free to close this application. Log file will be stored in:"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -21,4 +21,13 @@
         android:gravity="center_vertical|center_horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt;file path>"
+        android:id="@+id/filePathText"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
 </RelativeLayout>
