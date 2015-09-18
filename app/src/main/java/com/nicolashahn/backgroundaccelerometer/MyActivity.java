@@ -10,7 +10,7 @@ import android.widget.TextView;
     BackgroundAccelerometer
     Nicolas Hahn
     - Android application to record accelerometer data to log file
-    - some code in onSensorChanged() from black4ninja's 'Accelerometer' app
+    - Runs in background, restarts itself at bootup
 */
 public class MyActivity extends Activity{
     static final String LOG_TAG = MyActivity.class.getSimpleName();
@@ -20,12 +20,13 @@ public class MyActivity extends Activity{
     @Override
 
     public void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_my);
         super.onCreate(savedInstanceState);
         filepath = this.getString(R.string.file_path);
         startService(new Intent(this, BackgroundAccelerometerService.class));
         TextView fp = (TextView) findViewById(R.id.filePathText);
         Log.e(LOG_TAG, filepath );
-//        fp.setText(filepath);
+        fp.setText(filepath);
     }
 
     protected void onResume() {

@@ -14,6 +14,12 @@ import android.widget.Toast;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 
+/*
+    BackgroundAccelerometer
+    Nicolas Hahn
+    - Android application to record accelerometer data to log file
+    - Runs in background, restarts itself at bootup
+*/
 public class BackgroundAccelerometerService extends Service implements SensorEventListener{
     static final String LOG_TAG = MyActivity.class.getSimpleName();
     private float mLastX, mLastY, mLastZ;
@@ -32,8 +38,6 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
     // minimum time in seconds to write to file after previous write
     private int period = 5;
 
-//    private final float NOISE = (float) 0.75;
-
     public BackgroundAccelerometerService() {
 
     }
@@ -44,13 +48,10 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
         try {
             output = new FileOutputStream(filepath, true);
             writer = new FileWriter(output.getFD());
-//            writer.write("hey");
-//            writer.flush();
         }catch(Exception e){
             e.printStackTrace();
             Log.e(LOG_TAG,"could not open file for writing, error "+e.toString());
         }
-        // Let it continue running until it is stopped.
         Toast.makeText(this, "Service Started", Toast.LENGTH_LONG).show();
         Log.d("Service Started","Service Started");
         mInitialized = false;
