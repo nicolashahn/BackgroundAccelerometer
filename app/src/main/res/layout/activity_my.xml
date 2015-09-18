@@ -7,40 +7,18 @@
     >
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    ]
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The accelerometer logging service has started, and will run in the background. Feel free to close this application."
+        android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:id="@+id/x_axis"
-            android:text="x-axis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/y_axis"
-            android:text="y-axis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/x_axis"
-            />
-        <TextView
-            android:id="@+id/z_axis"
-            android:text="z-axis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/y_axis"
-            />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/image"
-            android:layout_below="@+id/x_axis"
-            android:layout_centerHorizontal="true" />
-    </LinearLayout>
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp"
+        android:textStyle="bold"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
 </RelativeLayout>

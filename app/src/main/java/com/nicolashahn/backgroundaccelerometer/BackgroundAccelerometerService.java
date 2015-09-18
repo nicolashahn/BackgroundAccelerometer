@@ -88,7 +88,7 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
     }
 
     public void onSensorChanged(SensorEvent event) {
-        Log.e(LOG_TAG,"onSensorChanged called");
+//        Log.e(LOG_TAG,"onSensorChanged called");
         float x = event.values[0];
         float y = event.values[1];
         float z = event.values[2];
