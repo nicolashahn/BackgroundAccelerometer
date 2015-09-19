@@ -22,7 +22,7 @@ import java.io.FileWriter;
 */
 public class BackgroundAccelerometerService extends Service implements SensorEventListener{
     static final String LOG_TAG = MyActivity.class.getSimpleName();
-    private float mLastX, mLastY, mLastZ;
+//    private float mLastX, mLastY, mLastZ;
     private boolean mInitialized;
 
     private SensorManager mSensorManager;
@@ -44,7 +44,10 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        filepath = this.getString(R.string.file_path);
+//        filepath = this.getString(R.string.file_path);
+//        Bundle bundle = intent.getExtras();
+        filepath = intent.getExtras().getString("userFilepath");
+        Log.e(LOG_TAG,"in BAService, filepath is "+filepath);
         try {
             output = new FileOutputStream(filepath, true);
             writer = new FileWriter(output.getFD());
@@ -107,9 +110,9 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
         String ts = tsLong.toString();
         String accelLine = ts+", "+Float.toString(x)+", "+Float.toString(y)+", "+Float.toString(z)+"\n";
         try {
-            Log.e(LOG_TAG, "writing to file " + accelLine);
             writer.write(accelLine);
             writer.flush();
+            Log.e(LOG_TAG, "writing to file " + accelLine);
         } catch (Exception e) {
             e.printStackTrace();
             Log.e(LOG_TAG, "exception when writing file in recordAccelData");

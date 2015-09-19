@@ -14,6 +14,6 @@ public class BootReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Intent serviceLauncher = new Intent(context, BackgroundAccelerometerService.class);
         context.startService(serviceLauncher);
-        Log.e(LOG_TAG, "BootReceiver started service");
+        Log.e(LOG_TAG, "BootReceiver started BackgroundAccelerometerService");
     }
 }

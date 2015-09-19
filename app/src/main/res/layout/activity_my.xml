@@ -18,21 +18,24 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Background service has started recording accelerometer data. Log file at:"
+            android:text="Choose path and file to write accelerometer data to:"
             android:id="@+id/textView"
             android:gravity="center_horizontal"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
-        <TextView
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/filePathText"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="filepath"
-            android:id="@+id/filePathText"
-            android:textStyle="bold"
-            android:textIsSelectable="true"
-            android:layout_below="@+id/textView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp" />
+            android:text="Start Service"
+            android:id="@+id/startServiceButton"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onPressStartService" />
     </LinearLayout>
 </RelativeLayout>
