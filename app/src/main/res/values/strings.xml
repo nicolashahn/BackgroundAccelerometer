@@ -4,6 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string name="file_path">/sdcard/Documents/accel_log.txt</string>
+    <string name="file_path">/sdcard/Documents/accel_log.csv</string>
     <string name="title_activity_dummy">DummyActivity</string>
 </resources>
