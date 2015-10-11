@@ -33,9 +33,20 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start Service"
+            android:text="Start"
             android:id="@+id/startServiceButton"
             android:layout_gravity="center_horizontal"
-            android:onClick="onPressStartService" />
+            android:onClick="onPressStartService"
+            android:background="#84dc97" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop"
+            android:id="@+id/stopButton"
+            android:layout_gravity="center_horizontal"
+            android:background="#dc8484"
+            android:layout_marginTop="10dp"
+            android:onClick="onPressStopService" />
     </LinearLayout>
 </RelativeLayout>

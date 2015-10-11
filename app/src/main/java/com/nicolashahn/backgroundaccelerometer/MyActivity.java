@@ -54,4 +54,8 @@ public class MyActivity extends Activity{
         startService(intent);
         Log.e(LOG_TAG, "Started service through onPressStartService");
     }
+
+    public void onPressStopService(View v){
+        stopService(new Intent(getApplicationContext(), BackgroundAccelerometerService.class));
+    }
 }
