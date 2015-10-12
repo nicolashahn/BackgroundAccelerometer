@@ -23,31 +23,22 @@ import java.io.FileWriter;
 */
 public class BackgroundAccelerometerService extends Service implements SensorEventListener{
     static final String LOG_TAG = MyActivity.class.getSimpleName();
-//    private float mLastX, mLastY, mLastZ;
     private boolean mInitialized;
-
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
-
-//    private String filepath = "/sdcard/Documents/accel_log.txt";
     private String filepath;
     private FileWriter writer;
     private FileOutputStream output;
-
     // epoch time since last file write
     private long lastTime = 0;
     // minimum time in seconds to write to file after previous write
     private int period = 5;
 
     public BackgroundAccelerometerService() {
-
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-//        filepath = this.getString(R.string.file_path);
-//        Bundle bundle = intent.getExtras();
-//        filepath = intent.getExtras().getString("userFilepath");
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.nicolashahn.backgroundaccelerometer", Context.MODE_PRIVATE);
         filepath = prefs.getString("filepath", filepath);
@@ -85,17 +76,13 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-//        throw new UnsupportedOperationException("Not yet implemented");
         return null;
     }
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-//        Log.e(LOG_TAG, "onAccuracyChanged called");
     }
 
     public void onSensorChanged(SensorEvent event) {
-//        Log.e(LOG_TAG,"onSensorChanged called");
         float x = event.values[0];
         float y = event.values[1];
         float z = event.values[2];
@@ -103,7 +90,6 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
         long tsLong = System.currentTimeMillis()/1000;
         if (tsLong > lastTime+period) {
             lastTime = tsLong;
-//            Log.e(LOG_TAG,"calling recordAccelData()");
             recordAccelData(x, y, z, tsLong);
         }
     }

@@ -20,8 +20,6 @@ public class MyActivity extends Activity{
 
     private String filepath;
 
-    public static final String FILE_PATH = "filepath";
-
     @Override
 
     public void onCreate(Bundle savedInstanceState) {
@@ -51,12 +49,8 @@ public class MyActivity extends Activity{
         SharedPreferences prefs = this.getSharedPreferences(
                 "com.nicolashahn.backgroundaccelerometer", Context.MODE_PRIVATE);
         prefs.edit().putString("filepath",userFilepath).apply();
-        // pass this filepath to the service
         Intent intent = new Intent(this, BackgroundAccelerometerService.class);
-//        intent.putExtra("userFilepath",userFilepath);
         Log.e(LOG_TAG, "in onPressStartService, userFilePath is "+userFilepath);
-//        Bundle bundle = new Bundle();
-//        bundle.putString("userFilepath",userFilepath);
         startService(intent);
         Log.e(LOG_TAG, "Started service through onPressStartService");
     }
