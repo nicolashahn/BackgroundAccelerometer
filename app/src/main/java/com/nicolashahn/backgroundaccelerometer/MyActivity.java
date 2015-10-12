@@ -1,7 +1,9 @@
 package com.nicolashahn.backgroundaccelerometer;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,16 +20,16 @@ public class MyActivity extends Activity{
 
     private String filepath;
 
+    public static final String FILE_PATH = "filepath";
+
     @Override
 
     public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_my);
         super.onCreate(savedInstanceState);
-        // set default filepath
-        filepath = this.getString(R.string.file_path);
-//        startService(new Intent(this, BackgroundAccelerometerService.class));
+        filepath = this.getString(R.string.default_file_path);
         EditText fp = (EditText) findViewById(R.id.filePathText);
-        Log.e(LOG_TAG, filepath );
+        Log.e(LOG_TAG, filepath);
         fp.setText(filepath);
     }
 
@@ -45,9 +47,13 @@ public class MyActivity extends Activity{
         // get user chosen filepath
         EditText fp = (EditText) findViewById(R.id.filePathText);
         String userFilepath = fp.getText().toString();
+        // store in sharedPrefs
+        SharedPreferences prefs = this.getSharedPreferences(
+                "com.nicolashahn.backgroundaccelerometer", Context.MODE_PRIVATE);
+        prefs.edit().putString("filepath",userFilepath).apply();
         // pass this filepath to the service
         Intent intent = new Intent(this, BackgroundAccelerometerService.class);
-        intent.putExtra("userFilepath",userFilepath);
+//        intent.putExtra("userFilepath",userFilepath);
         Log.e(LOG_TAG, "in onPressStartService, userFilePath is "+userFilepath);
 //        Bundle bundle = new Bundle();
 //        bundle.putString("userFilepath",userFilepath);

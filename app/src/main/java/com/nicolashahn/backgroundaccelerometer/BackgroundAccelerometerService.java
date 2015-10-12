@@ -3,6 +3,7 @@ package com.nicolashahn.backgroundaccelerometer;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -46,7 +47,10 @@ public class BackgroundAccelerometerService extends Service implements SensorEve
     public int onStartCommand(Intent intent, int flags, int startId) {
 //        filepath = this.getString(R.string.file_path);
 //        Bundle bundle = intent.getExtras();
-        filepath = intent.getExtras().getString("userFilepath");
+//        filepath = intent.getExtras().getString("userFilepath");
+        SharedPreferences prefs = this.getSharedPreferences(
+                "com.nicolashahn.backgroundaccelerometer", Context.MODE_PRIVATE);
+        filepath = prefs.getString("filepath", filepath);
         Log.e(LOG_TAG,"in BAService, filepath is "+filepath);
         try {
             output = new FileOutputStream(filepath, true);
